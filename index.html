@@ -4,238 +4,293 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>圣诞快乐</title>
+		<script src="http://libs.baidu.com/jquery/1.7.2/jquery.min.js"></script>
+		<title>Document</title>
 		<style>
-            html, body {
-                margin: 0;
-                padding: 0;
-                background: rgba(0,0,0, 0.3);
-                font-family: "Gill Sans", sans-serif;
-            }
-			.christmas-lights li {
-				--christmas-lights-1: #057d70; /*color - 1*/
-				--christmas-lights-2: #d41a21; /*color - 2*/
-				--christmas-lights-3: #ffd27c; /*color - 3*/
-				animation-duration: 2s;
-				animation-fill-mode: both;
-				animation-iteration-count: infinite;
-				animation-name: flash-1;
-				border-radius: 50%;
-				display: inline-block;
-				height: 20px;
-				margin: 25px 20px;
-				position: relative;
-				width: 20px;
-			}
-
-			.christmas-lights {
-				left: 0;
+			* {
 				margin: 0;
-				pointer-events: none;
-				position: fixed;
-				right: 0;
-				top: -15px;
-				white-space: nowrap;
-				width: 100%;
-				z-index: 100;
+				padding: 0;
 			}
-
-			.christmas-lights[data-position="bottom"] {
-				top: auto;
-				bottom: -15px;
-				transform: scale(-1);
+			body {
+				font: 15px "Microsoft YaHei", Arial, Helvetica, sans-serif;
+				background: #d4ebf1;
+				color: #000;
 			}
-
-			.christmas-lights[data-position="right"],
-			.christmas-lights[data-position="left"] {
-				transform: rotate(-90deg);
-				left: -10px;
-				top: 0;
-				right: auto;
-				bottom: 0;
-				width: 100vh;
-			}
-
-			.christmas-lights[data-position="right"] {
-				transform: rotate(90deg);
-				left: auto;
-				right: -15px;
-			}
-
-			.christmas-lights li:before {
-				content: "";
+			.m_body {
+				width: 362px;
+				height: 410px;
+				border: #393939 8px solid;
+				margin: 50px auto;
+				border-radius: 88% 88% 62% 68% / 82% 82% 95% 84%;
 				position: absolute;
-				background: #505050;
+				left: 109px;
+				top: -30px;
+				background: #fff;
+			}
+			.ear1,
+			.ear2 {
+				background: #393939;
+				width: 81px;
+				height: 115px;
+				border-radius: 50%;
+				position: absolute;
+				z-index: -1;
+			}
+			.ear1 {
+				left: 150px;
+				top: 26px;
+				transform: rotate(-10deg);
+			}
+			.ear2 {
+				left: 362px;
+				top: 28px;
+				transform: rotate(10deg);
+			}
+			.eye1,
+			.eye2 {
+				background: #393939;
+				width: 83px;
+				height: 115px;
+				border-radius: 50%;
+				position: absolute;
+			}
+			.eye1 {
+				left: 185px;
+				top: 122px;
+				transform: rotate(45deg);
+			}
+			.eye2 {
+				left: 329px;
+				top: 122px;
+				transform: rotate(-45deg);
+			}
+			.eye1:before,
+			.eye2:before {
+				content: "";
+				width: 40px;
+				height: 40px;
+				border: #fff 5px solid;
+				border-radius: 100%;
+				position: absolute;
+			}
+			.eye1:before {
+				right: 10px;
+				top: 22px;
+			}
+			.eye2:before {
+				left: 10px;
+				top: 22px;
+			}
+			.eye1:after,
+			.eye2:after {
+				content: "";
 				width: 10px;
 				height: 10px;
-				border-top-left-radius: 5px;
-				border-top-right-radius: 5px;
-				top: -9px;
-				left: 5px;
-			}
-
-			.christmas-lights li:after {
-				content: "";
-				top: -23px;
-				left: 10px;
+				background: #9b9b9b;
+				border-radius: 100%;
 				position: absolute;
-				width: 60px;
-				height: 20px;
-				border-bottom: solid #505050 2px;
-				border-radius: 50%;
+			}
+			.eye1:after {
+				right: 27px;
+				top: 31px;
+			}
+			.eye2:after {
+				left: 41px;
+				top: 44px;
+			}
+			.face {
+				position: absolute;
+				border-radius: 48% 48% 44% 49%/ 53% 54% 45% 47%;
+			}
+			.c_blue {
+				border: #6bcdf3 5px solid;
+				width: 280px;
+				height: 224px;
+				left: 150px;
+				top: 78px;
+			}
+			.c_red {
+				border: #af2350 5px solid;
+				width: 287px;
+				height: 233px;
+				left: 146px;
+				top: 73px;
+			}
+			.c_purple {
+				border: #5d75b3 5px solid;
+				width: 295px;
+				height: 240px;
+				left: 142px;
+				top: 70px;
+			}
+			.c_yellow {
+				border: #ffc346 5px solid;
+				width: 305px;
+				height: 248px;
+				left: 137px;
+				top: 65px;
+			}
+			.c_green {
+				border: #7fcb58 5px solid;
+				width: 313px;
+				height: 256px;
+				left: 133px;
+				top: 61px;
+			}
+			.arm1,
+			.arm2 {
+				background: #333;
+				position: absolute;
+				z-index: -1;
+			}
+			.arm1 {
+				width: 75px;
+				height: 118px;
+				left: 64px;
+				top: 244px;
+				transform: rotate(45deg);
+				border-radius: 24% 69% 68% 76%/ 53% 95% 40% 52%;
+			}
+			.arm2 {
+				width: 75px;
+				height: 148px;
+				left: 463px;
+				top: 162px;
+				transform: rotate(37deg);
+				border-radius: 56% 62% 98% 6%/ 40% 46% 80% 58%;
+			}
+			.arm2:before {
+				content: "";
+				width: 16px;
+				height: 24px;
+				background: #bc242c;
+				position: absolute;
+				border-top-left-radius: 50%;
+				border-top-right-radius: 50%;
+				transform: rotate(45deg);
+				left: 32px;
+				top: 20px;
+			}
+			.arm2:after {
+				content: "";
+				width: 16px;
+				height: 24px;
+				background: #bc242c;
+				position: absolute;
+				border-top-left-radius: 50%;
+				border-top-right-radius: 50%;
+				transform: rotate(-45deg);
+				left: 26px;
+				top: 20px;
+			}
+			.arm_c {
+				content: "";
+				width: 16px;
+				height: 24px;
+				position: absolute;
+				left: 426px;
+				top: 20px;
+			}
+			.nose {
+				background-color: #333333;
+			}
+			.nose:before,
+			.nose:after {
+				content: "";
+				position: absolute;
+				background-color: inherit;
+			}
+			.nose,
+			.nose:before,
+			.nose:after {
+				width: 28px;
+				height: 18px;
+				border-radius: 42px 42px 60px 61px/ 30px 30px 50px 46px;
+			}
+			.nose {
+				position: absolute;
+				left: 284px;
+				top: 187px;
+			}
+			.mouse {
+				position: absolute;
+				left: 265px;
+				top: 205px;
+				width: 68px;
+				height: 25px;
+				border-radius: 48%;
+				border: #393939 7px solid;
+				border-top: none;
+				border-left: 0;
+				border-right: 0;
+			}
+			.leg1,
+			.leg2 {
+				background: #333;
+				position: absolute;
+				width: 83px;
+				height: 80px;
+				border-radius: 0 0 30px 30px;
+				z-index: -1;
+			}
+			.leg1 {
+				left: 187px;
+				top: 423px;
+			}
+			.leg2 {
+				left: 328px;
+				top: 423px;
+			}
+			.leg1:after,
+			.leg2:after {
+				content: "";
+				width: 43px;
+				height: 30px;
+				position: absolute;
+				background: #363636;
+				border-radius: 30px;
+			}
+			.leg1:after {
+				bottom: 0;
+				right: -3px;
+			}
+			.leg2:after {
+				bottom: 0;
+				left: -3px;
 			}
 
-			.christmas-lights li:last-child:after {
-				content: none;
+			.note {
+				font: small-caps bold 16px/1 sans-serif;
 			}
-
-			.christmas-lights li:first-child {
-				margin-left: -40px;
-			}
-
-			.christmas-lights li:nth-child(2n + 1) {
-				background: var(--christmas-lights-1);
-				box-shadow: 0px 5px 24px 3px rgb(249 212 129);
-				animation-name: flash-2;
-				animation-duration: 0.4s;
-			}
-
-			.christmas-lights li:nth-child(4n + 2) {
-				background: var(--christmas-lights-2);
-				box-shadow: 0px 5px 24px 3px var(--christmas-lights-2);
-				animation-name: flash-3;
-				animation-duration: 1.1s;
-			}
-
-			.christmas-lights li:nth-child(odd) {
-				animation-duration: 1.8s;
-			}
-
-			.christmas-lights li:nth-child(3n + 1) {
-				animation-duration: 1.4s;
-			}
-
-			@keyframes flash-1 {
-				0%,
-				100% {
-					background: var(--christmas-lights-1);
-					box-shadow: 0px 5px 24px 3px var(--christmas-lights-1);
-				}
-				50% {
-					background: var(--christmas-lights-2);
-					box-shadow: 0px 5px 24px 3px var(--christmas-lights-2);
-				}
-			}
-
-			@keyframes flash-2 {
-				0%,
-				100% {
-					background: var(--christmas-lights-2);
-					box-shadow: 0px 5px 24px 3px var(--christmas-lights-2);
-				}
-				50% {
-					background: var(--christmas-lights-3);
-					box-shadow: 0px 5px 24px 3px var(--christmas-lights-3);
-				}
-			}
-
-			@keyframes flash-3 {
-				0%,
-				100% {
-					background: var(--christmas-lights-3);
-					box-shadow: 0px 5px 24px 3px var(--christmas-lights-3);
-				}
-				50% {
-					background: var(--christmas-lights-1);
-					box-shadow: 0px 5px 24px 3px var(--christmas-lights-1);
-				}
-			}
-
-			@media (max-width: 1024px) {
-				.christmas-lights[data-position="left"] {
-					left: -14px;
-				}
-
-				.christmas-lights[data-position="right"] {
-					right: -14px;
-				}
-
-				.christmas-lights[data-position="left"],
-				.christmas-lights[data-position="right"] {
-					height: 100vh;
-				}
-			}
-
-            .align-group-flex-center {
-                display: flex;
-                flex-flow: row nowrap;
-                justify-content: center;
-                align-items: center;
-            }
 		</style>
 	</head>
 	<body>
-        <div style="height:100vh; width:vh" class="align-group-flex-center">
+		<div>
+			<div class="m_body"></div>
+			<div class="ear1"></div>
+			<div class="ear2"></div>
+			<div class="eye1"></div>
+			<div class="eye2"></div>
+			<div class="face c_blue"></div>
+			<div class="face c_red"></div>
+			<div class="face c_purple"></div>
+			<div class="face c_yellow"></div>
+			<div class="face c_green"></div>
+			<div class="nose"></div>
+			<div class="mouse"></div>
+			<div class="arm1"></div>
+			<div class="arm2"></div>
+			<div class="leg1"></div>
+			<div class="leg2"></div>
+		</div>
 
-            <div style="color:#ffd27c">
-				<div>
-					<h1>🎄🎄🎄🎄🎄🎄</h1>
-					<h1>
-						🎄今天抱歉🎄
-					</h1>
-					<h1 style="text-align:center">
-						🎄🎄悦～🎄🎄
-					</h1>
-					<h1>🎄🎄🎄🎄🎄🎄</h1>
-				</div>
-				<div style="margin-top: 5px; border: 1px solid red;text-align: center;border-radius: 10px;">
-					❌宁蕴涵是坏蛋❌
-				</div>
-				<div style="text-align: center">⬆️⬆️⬆️⬆️⬆️⬆️</div>
-            </div>
-        </div>
+		<div class="note">点我耳朵嘛</div>
 		<script>
-			let christmas = {
-				delay: null,
-				delete: function () {
-					document.body
-						.querySelectorAll(".christmas-lights")
-						.forEach(function (ul) {
-							ul.remove();
-						});
-				},
-				create: function () {
-					let v = window.innerHeight / 60 + 2,
-						h = window.innerWidth / 60 + 2,
-						data = {
-							top: h,
-							right: v,
-							bottom: h,
-							left: v,
-						},
-						ul = (c = null);
-					for (let position in data) {
-						c = data[position];
-						ul = document.createElement("ul");
-						ul.className = "christmas-lights";
-						ul.dataset.position = position;
-						for (let i = 0; i <= c; i++) {
-							ul.append(document.createElement("li"));
-						}
-						document.body.append(ul);
-					}
-				},
-			};
-
-			document.addEventListener("DOMContentLoaded", function () {
-				christmas.create();
-			});
-
-			window.addEventListener("resize", function (e) {
-				clearTimeout(christmas.delay);
-				christmas.delay = setTimeout(function () {
-					christmas.delete();
-					christmas.create();
+			$(".ear1, .ear2").on("click", function () {
+				$(".ear1, .ear2").css("transform", "none");
+				setTimeout(function () {
+					$(".ear1").css("transform", "rotate(-10deg)");
+					$(".ear2").css("transform", "rotate(10deg)");
 				}, 100);
 			});
 		</script>
