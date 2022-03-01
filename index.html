@@ -15,6 +15,7 @@
 				font: 15px "Microsoft YaHei", Arial, Helvetica, sans-serif;
 				background: #d4ebf1;
 				color: #000;
+				height: 100vh;
 			}
 			.m_body {
 				width: 362px;
@@ -262,13 +263,17 @@
 			.note {
 				font: small-caps bold 16px/1 sans-serif;
 			}
+
+			#panda {
+				transform: scale(0.6) translateY(300px) translateX(-90px);
+			}
 		</style>
 	</head>
 	<body>
-		<div style="transform: scale(0.6)">
+		<div id="panda">
 			<div class="m_body"></div>
-			<div class="ear1"></div>
-			<div class="ear2"></div>
+			<div class="ear1 ear"></div>
+			<div class="ear2 ear"></div>
 			<div class="eye1"></div>
 			<div class="eye2"></div>
 			<div class="face c_blue"></div>
@@ -284,7 +289,7 @@
 			<div class="leg2"></div>
 		</div>
 
-		<div class="note">宝~点我耳朵嘛</div>
+		<div class="note">点我耳朵嘛</div>
 		<script>
 			$(".ear1, .ear2").on("click", function () {
 				$(".ear1, .ear2").css("transform", "none");
@@ -293,6 +298,64 @@
 					$(".ear2").css("transform", "rotate(10deg)");
 				}, 100);
 			});
+		</script>
+		<script type="text/javascript">
+			(function () {
+				var coreSocialistValues = [
+						"调皮",
+						"坏蛋",
+						"我怕痒",
+						"别点啦",
+						"你你你你",
+						"是不是喜欢我",
+						"别点啦",
+						"宝",
+						"别点啦",
+						"别点啦",
+						"别点啦",
+					],
+					index = Math.floor(
+						Math.random() * coreSocialistValues.length
+					);
+				Array.from(document.getElementsByClassName("ear")).forEach(
+					(div) => {
+						div.addEventListener("click", function (e) {
+							if (e.target.tagName == "A") {
+								return;
+							}
+							var x = e.pageX,
+								y = e.pageY,
+								span = document.createElement("span");
+							span.textContent = coreSocialistValues[index];
+							index = (index + 1) % coreSocialistValues.length;
+							span.style.cssText = [
+								"z-index: 9999999; position: absolute; font-weight: bold; color: #ff6651; top: ",
+								y - 20,
+								"px; left: ",
+								x,
+								"px;",
+							].join("");
+							document.body.appendChild(span);
+							animate(span);
+						});
+					}
+				);
+				function animate(el) {
+					var i = 0,
+						top = parseInt(el.style.top),
+						id = setInterval(frame, 16.7);
+					function frame() {
+						if (i > 180) {
+							clearInterval(id);
+							el.parentNode.removeChild(el);
+						} else {
+							i += 2;
+							el.style.top = top - i + "px";
+							el.style.opacity = (180 - i) / 180;
+						}
+					}
+				}
+			})();
 		</script>
 	</body>
 </html>
